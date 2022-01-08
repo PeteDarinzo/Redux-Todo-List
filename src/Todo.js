@@ -6,7 +6,6 @@ const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
 
   const handleDeleteTask = (e) => {
     e.preventDefault();
-    // deleteTask(e.target.parentElement.id);
     deleteTask(id);
   }
 
@@ -19,7 +18,7 @@ const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
     <div className="Todo" id={id} >
 
       <div className="Todo-task-container">
-        <span className={completed ? "Todo-task Todo-complete" : "Todo-task"}><i class="fas fa-angle-double-right"></i> {task}</span>
+        <span className={completed ? "Todo-task Todo-complete" : "Todo-task"}><i className="fas fa-angle-double-right"></i> {task}</span>
       </div>
 
       <div className="Todo-buttons">
