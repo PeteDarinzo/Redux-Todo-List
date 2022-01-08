@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Todo from "./Todo"
 import NewTodoForm from "./NewTodoForm";
 import { v4 as uuid } from "uuid";
-
+import "./ToDoList.css"
 
 
 
@@ -20,7 +20,7 @@ const TodoList = () => {
 
   const addTask = (newTask) => {
     setTasks((tasks) => {
-      const newTasks = [...tasks, { ...newTask, id: uuid() }]
+      const newTasks = [...tasks, { ...newTask, id: uuid() }];
       localStorage.setItem("tasks", JSON.stringify(newTasks));
       return newTasks;
     });
@@ -54,7 +54,7 @@ const TodoList = () => {
     <div>
       <h2>TODO List</h2>
       <NewTodoForm addTask={addTask} />
-      <div>
+      <div className="ToDoList">
         {tasks.map(({ task, completed, id }) => <Todo task={task} completed={completed} toggleComplete={toggleComplete} deleteTask={deleteTask} key={id} id={id} />)}
       </div>
     </div>

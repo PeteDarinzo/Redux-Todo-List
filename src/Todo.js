@@ -15,11 +15,23 @@ const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
     toggleComplete(id);
   }
 
-  return (<div id={id} className={completed ? "Todo-complete" : ""}>
-    {task}
-    <button onClick={handleDeleteTask}>X</button>
-    <button onClick={markComplete}>Mark Complete</button>
-  </div>);
+  return (
+    <div className="Todo" id={id} >
+
+      <div className="Todo-task-container">
+        <span className={completed ? "Todo-task Todo-complete" : "Todo-task"}><i class="fas fa-angle-double-right"></i> {task}</span>
+      </div>
+
+      <div className="Todo-buttons">
+
+        <button className="Todo-delete" onClick={handleDeleteTask}>X</button>
+
+        <button className="Todo-markComplete" onClick={markComplete}>Mark Complete</button>
+
+      </div>
+
+    </div>
+  );
 }
 
 export default Todo;

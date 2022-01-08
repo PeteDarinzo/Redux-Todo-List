@@ -1,4 +1,65 @@
 
+
+.Todo {
+  position: relative;
+  margin: 10px;
+  padding-bottom: 5px;
+  border-bottom: solid lightskyblue 1px;
+}
+
 .Todo-complete {
   text-decoration-line: line-through;
+}
+
+.Todo-task-container {
+  position: relative;
+  left: 10px;
+  width: 150px;
+}
+
+.Todo-task {
+  display: block;
+  text-align: left;
+  display: block;
+  left: 0;
+}
+
+ .Todo-buttons {
+  right: 10px;
+  bottom: 0;
+  position: absolute;
+  max-width: 170px;
+} 
+
+.Todo-delete {
+  background-color: white;
+  border: solid red 1px;
+  color: red;
+  margin: 5px;
+  border-radius: 10%;
+}
+
+.Todo-delete:hover {
+  background-color: red;
+  border: solid red 1px;
+  color: white;
+  margin: 5px;
+  transition: 250ms;
+  cursor: pointer;
+}
+
+.Todo-markComplete {
+  margin: 5px;
+  background-color: white;
+  border: solid green 1px;
+  border-radius: 10%;
+  color: green;
+}
+
+.Todo-markComplete:hover {
+  background-color: green;
+  border: solid green 1px;
+  color: white;
+  transition: 250ms;
+  cursor:pointer;
 }

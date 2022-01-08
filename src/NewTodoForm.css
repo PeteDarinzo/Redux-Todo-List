@@ -1,0 +1,25 @@
+
+.NewTodoForm {
+  padding: 20px;
+  display: inline-block;
+  border: solid black 2px;
+  margin-bottom: 50px;
+}
+
+.NewTodoForm-button {
+  padding: 10px;
+  margin: 5px 5px 5px 15px;
+  background-color: teal;
+  border: solid teal 2px;
+  color: white;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.NewTodoForm-button:hover {
+  background-color: white;
+  border: solid teal 2px;
+  color: teal;
+  transition: 250ms;
+}
+
