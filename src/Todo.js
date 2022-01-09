@@ -16,19 +16,13 @@ const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
 
   return (
     <div className="Todo" id={id} >
-
       <div className="Todo-task-container">
         <span className={completed ? "Todo-task Todo-complete" : "Todo-task"}><i className="fas fa-angle-double-right"></i> {task}</span>
       </div>
-
       <div className="Todo-buttons">
-
         <button className="Todo-delete" onClick={handleDeleteTask}>X</button>
-
         <button className="Todo-markComplete" onClick={markComplete}>Mark Complete</button>
-
       </div>
-
     </div>
   );
 }

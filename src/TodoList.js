@@ -5,12 +5,11 @@ import { v4 as uuid } from "uuid";
 import "./ToDoList.css"
 
 
-
 const TodoList = () => {
 
   const [tasks, setTasks] = useState([]);
 
-  // set tasks from local storage
+  // get tasks from local storage upon load
   window.addEventListener('DOMContentLoaded', (e) => {
     if (localStorage.getItem("tasks") === null) {
       localStorage.setItem("tasks", JSON.stringify(tasks));

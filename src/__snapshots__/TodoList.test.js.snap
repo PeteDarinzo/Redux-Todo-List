@@ -10,6 +10,7 @@ exports[`matches the todo snapshot 1`] = `
       class="NewTodoForm"
     >
       <label
+        class="NewTodoForm-label"
         for="task"
       >
         New Task

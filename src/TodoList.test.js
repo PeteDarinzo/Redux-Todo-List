@@ -23,6 +23,7 @@ it("should add a new task", () => {
   fireEvent.click(btn);
 
   const newTask = queryByText("walk dog");
+  
   expect(newTask).toBeInTheDocument();
 });
 
@@ -36,11 +37,13 @@ it("should delete a task", () => {
   fireEvent.click(addBtn);
 
   const newTask = queryByText("feed cat");
+
   expect(newTask).toBeInTheDocument();
 
   const deleteBtn = queryByText("X");
 
   fireEvent.click(deleteBtn);
+
   expect(newTask).not.toBeInTheDocument();
 });
 
@@ -54,12 +57,15 @@ it("should toggle a task's completion", () => {
   fireEvent.click(addBtn);
 
   const newTask = queryByText("feed turtle");
+
   expect(newTask).toBeInTheDocument();
 
   const completeBtn = queryByText("Mark Complete");
+
   expect(newTask).toHaveClass("Todo-task");
   expect(newTask).not.toHaveClass("Todo-complete");
   
   fireEvent.click(completeBtn);
+
   expect(newTask).toHaveClass("Todo-task Todo-complete");
 });
