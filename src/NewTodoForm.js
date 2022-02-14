@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NewTodoForm.css";
 
-const NewTodoForm = ({ addTask }) => {
+const NewTodoForm = ({ addTodo }) => {
   const initialState = {
     task: "",
     completed: false
@@ -21,7 +21,7 @@ const NewTodoForm = ({ addTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.task) {
-      addTask({ task: formData.task, completed: false });
+      addTodo({ task: formData.task, completed: false });
       setFormData(initialState);
     }
   }

@@ -1,48 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Todo from "./Todo"
 import NewTodoForm from "./NewTodoForm";
+import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 import "./ToDoList.css"
 
 
 const TodoList = () => {
 
-  const [tasks, setTasks] = useState([]);
+  const todos = useSelector(store => store.todos);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem("tasks") === null) {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } else {
+      const storedTodos = JSON.parse(localStorage.getItem("todos"));
+      for (let t of storedTodos) {
+        dispatch({ type: "ADD", payload: t })
+      }
     }
-    setTasks(() => JSON.parse(localStorage.getItem("tasks")));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
-  const addTask = (newTask) => {
-    const newTasks = [...tasks, { ...newTask, id: uuid() }]
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-    setTasks(tasks => newTasks);
+  const addTodo = (newTask) => {
+    const id = uuid();
+    dispatch({ type: "ADD", payload: { ...newTask, id } });
+    localStorage.setItem("tasks", JSON.stringify(todos));
+  }
+
+  const removeTodo = (id) => {
+    dispatch({ type: "REMOVE", payload: id });
   }
 
   const toggleComplete = (id) => {
-    let newTasks = [...tasks];
-    let taskIndex = newTasks.findIndex(task => task.id === id);
-    newTasks[taskIndex].completed === false ? newTasks[taskIndex].completed = true : newTasks[taskIndex].completed = false;
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-    setTasks(tasks => newTasks);
-  }
-
-  const deleteTask = (id) => {
-    const newTasks = tasks.filter(task => task.id !== id);
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-    setTasks(tasks => newTasks);
+    dispatch({ type: "TOGGLE", payload: id })
   }
 
   return (
     <div>
       <h2>TODO List</h2>
-      <NewTodoForm addTask={addTask} />
+      <NewTodoForm addTodo={addTodo} />
       <div className="ToDoList">
-        {tasks.map(({ task, completed, id }) => <Todo task={task} completed={completed} toggleComplete={toggleComplete} deleteTask={deleteTask} key={id} id={id} />)}
+        {todos.map(({ task, completed, id }) => <Todo task={task} completed={completed} toggleComplete={toggleComplete} removeTodo={removeTodo} key={id} id={id} />)}
       </div>
     </div>
   );

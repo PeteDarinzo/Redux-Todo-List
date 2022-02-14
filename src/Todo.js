@@ -2,14 +2,14 @@ import React from "react";
 import "./Todo.css";
 
 
-const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
+const Todo = ({ task, id, completed, toggleComplete, removeTodo }) => {
 
-  const handleDeleteTask = (e) => {
+  const handleDeleteTodo = (e) => {
     e.preventDefault();
-    deleteTask(id);
+    removeTodo(id);
   }
 
-  const markComplete = (e) => {
+  const handleToggle = (e) => {
     e.preventDefault();
     toggleComplete(id);
   }
@@ -20,8 +20,8 @@ const Todo = ({ task, id, completed, toggleComplete, deleteTask }) => {
         <span className={completed ? "Todo-task Todo-complete" : "Todo-task"}><i className="fas fa-angle-double-right"></i> {task}</span>
       </div>
       <div className="Todo-buttons">
-        <button className="Todo-delete" onClick={handleDeleteTask}>X</button>
-        <button className="Todo-markComplete" onClick={markComplete}>Mark Complete</button>
+        <button className="Todo-delete" onClick={handleDeleteTodo}>X</button>
+        <button className="Todo-markComplete" onClick={handleToggle}>Mark Complete</button>
       </div>
     </div>
   );
